@@ -1,0 +1,61 @@
+// dynArrayPrac.cpp
+// Experiments with dynamic arrays
+// By Mehdi Mokhtari
+
+#include <iostream>
+using namespace std;
+
+// addItem to array
+void addItem(int newItem, int*& scores, int&numItems, int&capacity);
+
+int main()
+{
+    int capacity = 10;
+    int numItems = 5;
+    int * scores = new int[capacity]{1,2,3,4,5};
+
+    for (int i = 0; i < 100; 1++)
+    {
+        addItem(i*2+3, scores, numItems, capacity);
+    }
+
+    cout << "Capacity: " << capacity << "\n";
+    cout << "Num items: " << numItems << "\n";
+
+    for (int 1= 0; i < numItems; i++)
+    {
+        cout << scores[i] << " ";
+    }
+    cout << endl;
+
+    /*int * ptr1, *ptr2;
+
+    ptr1 = new int;
+    *ptr1 = 5;
+
+    ptr2 = ptr1;
+
+    delete ptr2;
+    cout << "just deleted ptr2" << endl;
+    delete ptr1;
+    cout << "just deleted ptr1" << endl;
+*/
+
+}
+
+void addItem(int newItem, int*& scores int& numItems, int& capacity)
+{
+    if (numItems == capacity)
+    {
+        capacity = capacity * 2;
+        int* temp = new int [capacity];
+        for (int i = 0; i < numItems; i++)
+        {
+            temp[i] = scores[i];
+        }
+        delete [] scores;
+        scores = temp;
+    }
+    scores[numItems] = newItem;
+    numItems++;
+}
